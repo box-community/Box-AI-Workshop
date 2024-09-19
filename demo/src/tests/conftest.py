@@ -14,12 +14,12 @@ def box_env_ccg() -> ConfigCCG:
 
 
 @pytest.fixture(scope="module")
-def box_client_ccg(box_env_ccg) -> BoxClient:
+def box_client_ccg(box_env_ccg: ConfigCCG) -> BoxClient:
     client = get_ccg_enterprise_client(box_env_ccg)
     return client
 
 
 @pytest.fixture(scope="module")
-def box_client_ccg_user(box_env_ccg) -> BoxClient:
+def box_client_ccg_user(box_env_ccg: ConfigCCG) -> BoxClient:
     client = get_ccg_user_client(box_env_ccg, box_env_ccg.ccg_user_id)
     return client
