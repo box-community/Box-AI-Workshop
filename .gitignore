@@ -2,6 +2,8 @@
 .*
 # not git ignore
 !.gitignore
+# sample files
+demo/samples/files/*
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
