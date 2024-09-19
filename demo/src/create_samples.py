@@ -1,5 +1,7 @@
+from pathlib import Path
+
 import pandas as pd
-from mailmerge import MailMerge
+from docxtpl import DocxTemplate
 from utils.box_client_ccg import ConfigCCG
 
 
@@ -7,29 +9,29 @@ def execute_mail_merge():
     conf = ConfigCCG()
 
     df = pd.read_csv(conf.file_csv, sep=",", quotechar='"')
-    merge_doc = MailMerge(conf.file_template)
-    fields = merge_doc.get_merge_fields()
-    print(f"{fields}\n")
+    doc = DocxTemplate(conf.file_template)
 
     for row in df.to_dict(orient="records"):
-        print(f"{row}\n")
-        merge_doc.merge(
-            Tenant=row.get("Tenant"),
-            Email=row.get("Email"),
-            Lease_Date=row.get("Lease Date"),
-            Start_Date=row.get("Start Date"),
-            End_Date=row.get("End Date"),
-            Property=row.get("Property"),
-            Property_Type=row.get("Property Type"),
-            Property_Description=row.get("Property Description"),
-            Bed_rooms=row.get("Bed rooms"),
-            Rent=row.get("Rent"),
-        )
-        out_file = f"{conf.folder_samples}/{row.get('Property')}.docx"
-        with open(out_file, "wb") as f:
-            merge_doc.write(f)
+        context = {
+            "Tenant": row.get("Tenant"),
+            "Email": row.get("Email"),
+            "LeaseDate": row.get("LeaseDate"),
+            "StartDate": row.get("StartDate"),
+            "EndDate": row.get("EndDate"),
+            "Property": row.get("Property"),
+            "PropertyType": row.get("PropertyType"),
+            "Description": row.get("Description"),
+            "BedRooms": row.get("BedRooms"),
+            "Rent": f"${row.get("Rent"):,.2f}",
+        }
+        doc.render(context)
 
-        break
+        # make sure folder samples exists and create if not
+        Path(conf.folder_samples).mkdir(parents=True, exist_ok=True)
+
+        doc_file_path = f"{conf.folder_samples}/{row.get('Property')}.docx"
+        doc.save(doc_file_path)
+        print(f"Generated: {doc_file_path}")
 
 
 def main():

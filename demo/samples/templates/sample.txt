@@ -1,12 +1,15 @@
 SCHIAPARELLI PLAZA PROPERTY LEASE AGREEMENT
-This Lunar Property Lease Agreement (hereinafter referred to as the "Agreement") is made and entered into on this «Lease_Date» by and between:
+This Lunar Property Lease Agreement (hereinafter referred to as the "Agreement") is made and entered into on this {{ LeaseDate }} by and between:
+
 Lessor: Schiaparelli plaza, with a registered address at Schiaparelli crater, Oceanus Procellarum, Moon, hereinafter referred to as the "Lessor."
-Lessee: «Tenant», with a registered address «Email», hereinafter referred to as the "Lessee."
+
+Lessee: {{ Tenant }}, with a registered address {{ Email }}, hereinafter referred to as the "Lessee."
+
 Both parties agree to the following terms and conditions governing the lease of lunar property located in the designated lunar territory as described below.
 1. PROPERTY DESCRIPTION
-The Lessor agrees to lease to the Lessee a designated «Property_Type» of lunar surface, identified as «Property», on the Schiaparelli Plaza Property.
+The Lessor agrees to lease to the Lessee a designated {{ PropertyType }} of lunar surface, identified as {{ Property }}, on the Schiaparelli Plaza Property.
 BEDROOMS:
-«PROPERTY_DESCRIPTION»
+{{ Description }}
 OPEN-PLAN KITCHEN AND LIVING ROOM:
 A central, open space designed for communal living. The kitchen is equipped with advanced hydroponic food systems, enabling sustainable food production, and energy-efficient appliances designed for zero-gravity cooking. The living area provides a relaxing space with modular, multi-functional furniture that adapts to various configurations for lounging or socializing with guests.
 RECYCLING FACILITIES:
@@ -17,9 +20,9 @@ A robust life support system provides continuous air filtration, water purificat
 CONNECTIVITY:
 The unit is equipped with high-bandwidth communication arrays for Earth-lunar data exchange, facilitating constant connectivity for both personal and research needs.
 2. TERM OF LEASE
-The term of this Agreement shall commence on «Start_Date» and shall remain in effect until «End_Date», unless terminated earlier in accordance with this Agreement. The lease is renewable based on mutual agreement and availability of the lunar property.
+The term of this Agreement shall commence on {{ StartDate }} and shall remain in effect until {{ EndDate }}, unless terminated earlier in accordance with this Agreement. The lease is renewable based on mutual agreement and availability of the lunar property.
 3. RENT
-The Lessee agrees to pay the Lessor an amount of «Rent» per Month for the use of the property. Payments are due on the first of each lunar month and are to be made electronically to the Lessor's designated account on Earth.
+The Lessee agrees to pay the Lessor an amount of {{ Rent }} per Month for the use of the property. Payments are due on the first of each lunar month and are to be made electronically to the Lessor's designated account on Earth.
 4. USE OF THE PROPERTY
 The habitat units are exclusively designated for private living and remote work in a quiet and focused environment. These units are designed to support daily life and work activities for lunar residents, ensuring comfort and sustainability.
 The use of the habitats for commercial purposes, public entertainment, parties, or similar social gatherings is strictly prohibited.
@@ -40,13 +43,22 @@ In the event of any disputes arising from this Agreement, both parties agree to 
 Transfer of Lease: The Lessee shall not transfer or sublet the property without prior written consent from the Lessor.
 Force Majeure: Neither party shall be held responsible for delays or failures in performance due to circumstances beyond their control, including but not limited to space storms, mechanical failures, or launch delays.
 
+ 
 SIGNATURES
+
 LESSOR:
+
+
 ________________________________________
 Name: Schiaparelli plaza
-Date: «Lease_Date»
+Date: {{ LeaseDate }}
+
+
 LESSEE:
+
+
 ________________________________________
-Name: «Tenant»
-Date: «Lease_Date»
+Name: {{ Tenant }}
+Date: {{ LeaseDate }}
+
 
