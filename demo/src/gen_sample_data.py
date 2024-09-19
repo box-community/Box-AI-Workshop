@@ -1,5 +1,9 @@
+from utils.create_samples import execute_mail_merge
+
+
 def main():
-    pass
+    # execute mail merge
+    execute_mail_merge()
 
 
 if __name__ == "__main__":
