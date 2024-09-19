@@ -2,7 +2,7 @@ from pathlib import Path
 
 import pandas as pd
 from docxtpl import DocxTemplate
-from utils.box_client_ccg import ConfigCCG
+from utils.box_client_ccg import AppConfig
 
 
 def test_file_csv_read(box_env_ccg):
@@ -12,12 +12,12 @@ def test_file_csv_read(box_env_ccg):
     assert len(df.columns) > 0
 
 
-def test_file_template_read(box_env_ccg: ConfigCCG):
+def test_file_template_read(box_env_ccg: AppConfig):
     merge_doc = DocxTemplate(box_env_ccg.file_template)
     assert merge_doc is not None
 
 
-def test_file_merge(box_env_ccg: ConfigCCG):
+def test_file_merge(box_env_ccg: AppConfig):
     df = pd.read_csv(box_env_ccg.file_csv, sep=",", quotechar='"')
     assert df is not None
     assert len(df) > 0

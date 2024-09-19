@@ -1,6 +1,6 @@
 from box_sdk_gen import BoxClient
 from utils.box_client_ccg import (
-    ConfigCCG,
+    AppConfig,
     get_ccg_enterprise_client,
     get_ccg_user_client,
     whoami,
@@ -8,7 +8,7 @@ from utils.box_client_ccg import (
 
 
 def test_get_ccg_enterprise_client():
-    config = ConfigCCG()
+    config = AppConfig()
     client = get_ccg_enterprise_client(config)
     assert client is not None
     user = whoami(client)
@@ -17,7 +17,7 @@ def test_get_ccg_enterprise_client():
 
 
 def test_get_ccg_user_client():
-    config = ConfigCCG()
+    config = AppConfig()
     client = get_ccg_user_client(config, config.ccg_user_id)
     assert client is not None
     user = whoami(client)

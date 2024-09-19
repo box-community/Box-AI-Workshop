@@ -5,10 +5,10 @@ from pathlib import Path
 
 from box_sdk_gen import BoxClient
 from utils.box import file_delete, file_upload, folder_create, folder_delete
-from utils.box_client_ccg import ConfigCCG
+from utils.box_client_ccg import AppConfig
 
 
-def test_box_file_upload(box_client_ccg_user: BoxClient, box_env_ccg: ConfigCCG):
+def test_box_file_upload(box_client_ccg_user: BoxClient, box_env_ccg: AppConfig):
     client = box_client_ccg_user
     conf = box_env_ccg
     # create temporary random file
@@ -46,7 +46,7 @@ def test_box_file_upload(box_client_ccg_user: BoxClient, box_env_ccg: ConfigCCG)
     assert not Path(temp_file.name).exists()
 
 
-def test_box_folder_create(box_client_ccg_user: BoxClient, box_env_ccg: ConfigCCG):
+def test_box_folder_create(box_client_ccg_user: BoxClient, box_env_ccg: AppConfig):
     client = box_client_ccg_user
     conf = box_env_ccg
     folder_name = "test_folder_create"

@@ -17,7 +17,7 @@ from box_sdk_gen import (
 # ENV_CCG = None
 
 
-class ConfigCCG:
+class AppConfig:
     """application configurations"""
 
     def __init__(self) -> None:
@@ -26,7 +26,7 @@ class ConfigCCG:
             "client_secret": "BOX_CLIENT_SECRET",
             "enterprise_id": "BOX_ENTERPRISE_ID",
             "ccg_user_id": "BOX_USER_ID",
-            "cache_file": ("BOX_CACHE_FILE", ".ccg.tk"),
+            "cache_file": ("BOX_CACHE_FILE", ".auth.ccg"),
             "file_csv": "FILE_CSV",
             "file_template": "FILE_TEMPLATE",
             "folder_samples": "FOLDER_SAMPLES",
@@ -52,36 +52,34 @@ def __repr__(self) -> str:
     return f"ConfigCCG({self.__dict__})"
 
 
-def get_ccg_enterprise_client(config: ConfigCCG) -> BoxClient:
+def get_ccg_enterprise_client(config: AppConfig) -> BoxClient:
     """Returns a box sdk Client object"""
 
     ccg = CCGConfig(
         client_id=config.client_id,
         client_secret=config.client_secret,
         enterprise_id=config.enterprise_id,
-        token_storage=FileWithInMemoryCacheTokenStorage(".ent" + config.cache_file),
+        token_storage=FileWithInMemoryCacheTokenStorage(f"{config.cache_file}.ent"),
     )
     auth = BoxCCGAuth(ccg)
-
+    # print(f"Auth Enterprise: {auth.token_storage}")
     client = BoxClient(auth)
-
     return client
 
 
-def get_ccg_user_client(config: ConfigCCG, user_id: str) -> BoxClient:
+def get_ccg_user_client(config: AppConfig, user_id: str) -> BoxClient:
     """Returns a box sdk Client object"""
 
     ccg = CCGConfig(
         client_id=config.client_id,
         client_secret=config.client_secret,
-        enterprise_id=config.enterprise_id,
-        token_storage=FileWithInMemoryCacheTokenStorage(".user" + config.cache_file),
+        # enterprise_id=config.enterprise_id,
+        user_id=config.ccg_user_id,
+        token_storage=FileWithInMemoryCacheTokenStorage(f"{config.cache_file}.usr"),
     )
     auth = BoxCCGAuth(ccg)
-    auth = auth.with_user_subject(user_id)
-
+    # print(f"Auth User: {auth.token_storage}")
     client = BoxClient(auth)
-
     return client
 
 

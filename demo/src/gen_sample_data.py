@@ -3,7 +3,7 @@ from pathlib import Path
 from box_sdk_gen import File, Folder
 from tqdm import tqdm
 from utils.box import file_upload, folder_create
-from utils.box_client_ccg import ConfigCCG, get_ccg_user_client, whoami
+from utils.box_client_ccg import AppConfig, get_ccg_user_client, whoami
 from utils.create_samples import execute_mail_merge
 
 
@@ -12,7 +12,7 @@ def main():
     execute_mail_merge()
 
     # get box user client
-    conf = ConfigCCG()
+    conf = AppConfig()
     print(f"\nConfiguration:\n{conf.to_dict()}")
 
     # get ccg user client

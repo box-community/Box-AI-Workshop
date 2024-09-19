@@ -3,11 +3,11 @@ from pathlib import Path
 import pandas as pd
 from docxtpl import DocxTemplate
 from tqdm import tqdm
-from utils.box_client_ccg import ConfigCCG
+from utils.box_client_ccg import AppConfig
 
 
 def execute_mail_merge():
-    conf = ConfigCCG()
+    conf = AppConfig()
 
     df = pd.read_csv(conf.file_csv, sep=",", quotechar='"')
     doc = DocxTemplate(conf.file_template)
