@@ -29,10 +29,10 @@ def execute_mail_merge():
         doc.render(context)
 
         # make sure folder samples exists and create if not
-        Path(conf.folder_samples).mkdir(parents=True, exist_ok=True)
+        Path(f"{conf.folder_samples}/Files").mkdir(parents=True, exist_ok=True)
 
-        doc_file_path = f"{conf.folder_samples}/{row.get('Property')}.docx"
+        doc_file_path = f"{conf.folder_samples}/Files/{row.get('Property')}.docx"
         doc.save(doc_file_path)
         # print(f"Generated: {doc_file_path}")
 
-    print(f"\nGenerated {len(df)} sample files in {conf.folder_samples}")
+    print(f"\nGenerated {len(df)} sample files in {conf.folder_samples}/Files")

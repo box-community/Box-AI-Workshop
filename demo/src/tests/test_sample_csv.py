@@ -41,16 +41,23 @@ def test_file_merge(box_env_ccg: AppConfig):
         }
         doc.render(context)
         assert doc.is_rendered
+
         # make sure folder samples exists and create if not
-        Path(box_env_ccg.folder_samples).mkdir(parents=True, exist_ok=True)
+        Path(f"{box_env_ccg.folder_samples}/Files").mkdir(parents=True, exist_ok=True)
+
         # save docx file
-        doc_file_path = f"{box_env_ccg.folder_samples}/test_{row.get('Property')}.docx"
+        doc_file_path = (
+            f"{box_env_ccg.folder_samples}/Files/test_{row.get('Property')}.docx"
+        )
         doc.save(doc_file_path)
         assert doc.is_saved
+
         # check if file exists
         assert Path(doc_file_path).exists()
+
         # delete docx file
         Path(doc_file_path).unlink()
+
         # check tha file was deleted
         assert not Path(doc_file_path).exists()
 

@@ -23,6 +23,28 @@ def main():
     user = whoami(client)
     print(f"Who am I: {user.name} (id: {user.id})")
 
+    # create templates folder in box
+    print("\nCreating templates folder:")
+    templates_folder: Folder = folder_create(
+        client=client,
+        parent_folder_id=conf.box_root_demo_folder,
+        folder_name="Templates",
+    )
+    # read local template files and upload to box
+    print("\nUploading template files:")
+    total_bytes = sum(
+        f.stat().st_size for f in Path(f"{conf.folder_samples}/Templates").iterdir()
+    )
+    progress_bar = tqdm(total=total_bytes, unit="B", unit_scale=True)
+    for template_file in Path(f"{conf.folder_samples}/Templates").iterdir():
+        file: File = file_upload(
+            client=client,
+            local_file_path=template_file.as_posix(),
+            parent_folder_id=templates_folder.id,
+        )
+        progress_bar.update(template_file.stat().st_size)
+    progress_bar.close()
+
     # create samples folder in box
     print("\nCreating sample folders:")
     sample_folder: Folder = folder_create(
@@ -34,10 +56,12 @@ def main():
 
     # read local sample files and upload to box
     print("\nUploading sample files:")
-    total_bytes = sum(f.stat().st_size for f in Path(conf.folder_samples).iterdir())
+    total_bytes = sum(
+        f.stat().st_size for f in Path(f"{conf.folder_samples}/Files").iterdir()
+    )
     progress_bar = tqdm(total=total_bytes, unit="B", unit_scale=True)
 
-    for sample_file in Path(conf.folder_samples).iterdir():
+    for sample_file in Path(f"{conf.folder_samples}/files").iterdir():
         file: File = file_upload(
             client=client,
             local_file_path=sample_file.as_posix(),
