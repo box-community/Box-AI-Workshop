@@ -4,7 +4,7 @@ import tempfile
 from pathlib import Path
 
 from box_sdk_gen import BoxClient
-from utils.box import file_delete, file_upload
+from utils.box import file_delete, file_upload, folder_create, folder_delete
 from utils.box_client_ccg import ConfigCCG
 
 
@@ -44,3 +44,30 @@ def test_box_file_upload(box_client_ccg_user: BoxClient, box_env_ccg: ConfigCCG)
     # delete temporary file
     Path(temp_file.name).unlink()
     assert not Path(temp_file.name).exists()
+
+
+def test_box_folder_create(box_client_ccg_user: BoxClient, box_env_ccg: ConfigCCG):
+    client = box_client_ccg_user
+    conf = box_env_ccg
+    folder_name = "test_folder_create"
+    folder = folder_create(
+        client=client,
+        parent_folder_id=conf.box_root_demo_folder,
+        folder_name=folder_name,
+    )
+    assert folder is not None
+    assert folder.id is not None
+    assert folder.name == folder_name
+
+    # create same folder again
+    folder_duplicate = folder_create(
+        client=client,
+        parent_folder_id=conf.box_root_demo_folder,
+        folder_name=folder_name,
+    )
+    assert folder_duplicate is not None
+    assert folder_duplicate.id is not None
+    assert folder_duplicate.id == folder.id
+
+    # delete folder
+    folder_delete(client, folder.id, recursive=True)

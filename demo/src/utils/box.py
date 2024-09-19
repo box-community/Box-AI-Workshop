@@ -1,6 +1,13 @@
 from pathlib import Path
 
-from box_sdk_gen import BoxAPIError, BoxClient, File, PreflightFileUploadCheckParent
+from box_sdk_gen import (
+    BoxAPIError,
+    BoxClient,
+    CreateFolderParent,
+    File,
+    Folder,
+    PreflightFileUploadCheckParent,
+)
 
 
 def file_upload(
@@ -44,3 +51,25 @@ def file_upload(
 
 def file_delete(client: BoxClient, file_id: str):
     client.files.delete_file_by_id(file_id)
+
+
+def folder_create(client: BoxClient, parent_folder_id: str, folder_name: str) -> Folder:
+    parent = CreateFolderParent(id=parent_folder_id)
+    try:
+        return client.folders.create_folder(name=folder_name, parent=parent)
+    except BoxAPIError as e:
+        if e.response_info.code == "item_name_in_use":
+            return client.folders.get_folder_by_id(
+                e.response_info.context_info.get("conflicts")[0].get("id")
+            )
+        raise e
+
+
+def folder_delete(client: BoxClient, folder_id: str, recursive: bool = False):
+    try:
+        client.folders.delete_folder_by_id(folder_id, recursive=recursive)
+    except BoxAPIError as e:
+        if e.response_info.code == "folder_not_empty":
+            raise e.message
+        else:
+            raise e

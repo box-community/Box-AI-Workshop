@@ -21,21 +21,31 @@ class ConfigCCG:
     """application configurations"""
 
     def __init__(self) -> None:
-        # Common configurations
-        self.client_id = os.getenv("BOX_CLIENT_ID")
-        self.client_secret = os.getenv("BOX_CLIENT_SECRET")
+        env_vars = {
+            "client_id": "BOX_CLIENT_ID",
+            "client_secret": "BOX_CLIENT_SECRET",
+            "enterprise_id": "BOX_ENTERPRISE_ID",
+            "ccg_user_id": "BOX_USER_ID",
+            "cache_file": ("BOX_CACHE_FILE", ".ccg.tk"),
+            "file_csv": "FILE_CSV",
+            "file_template": "FILE_TEMPLATE",
+            "folder_samples": "FOLDER_SAMPLES",
+            "box_root_demo_folder": "BOX_ROOT_DEMO_FOLDER",
+        }
 
-        # CCG configurations
-        self.enterprise_id = os.getenv("BOX_ENTERPRISE_ID")
-        self.ccg_user_id = os.getenv("BOX_USER_ID")
+        for attr, env_var in env_vars.items():
+            if isinstance(env_var, tuple):
+                setattr(self, attr, os.getenv(env_var[0], env_var[1]))
+            else:
+                setattr(self, attr, os.getenv(env_var))
 
-        self.cache_file = os.getenv("BOX_CACHE_FILE", ".ccg.tk")
+    def __repr__(self) -> str:
+        return f"ConfigCCG({self.__dict__})"
 
-        self.file_csv = os.getenv("FILE_CSV")
-        self.file_template = os.getenv("FILE_TEMPLATE")
-        self.folder_samples = os.getenv("FOLDER_SAMPLES")
+    __str__ = __repr__
 
-        self.box_root_demo_folder = os.getenv("BOX_ROOT_DEMO_FOLDER")
+    def to_dict(self) -> dict:
+        return {k: v for k, v in self.__dict__.items() if k != "client_secret"}
 
 
 def __repr__(self) -> str:
