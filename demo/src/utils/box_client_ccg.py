@@ -5,6 +5,7 @@ orchestrates the authentication process
 
 import os
 
+import dotenv
 from box_sdk_gen import (
     BoxCCGAuth,
     BoxClient,
@@ -13,31 +14,30 @@ from box_sdk_gen import (
     User,
 )
 
-# ENV_CCG = ".ccg.env"
-# ENV_CCG = None
-
 
 class AppConfig:
     """application configurations"""
 
-    def __init__(self) -> None:
-        env_vars = {
-            "client_id": "BOX_CLIENT_ID",
-            "client_secret": "BOX_CLIENT_SECRET",
-            "enterprise_id": "BOX_ENTERPRISE_ID",
-            "ccg_user_id": "BOX_USER_ID",
-            "cache_file": ("BOX_CACHE_FILE", ".auth.ccg"),
-            "file_csv": "FILE_CSV",
-            "file_template": "FILE_TEMPLATE",
-            "folder_samples": "FOLDER_SAMPLES",
-            "box_root_demo_folder": "BOX_ROOT_DEMO_FOLDER",
-        }
+    dotenv.load_dotenv()
 
-        for attr, env_var in env_vars.items():
-            if isinstance(env_var, tuple):
-                setattr(self, attr, os.getenv(env_var[0], env_var[1]))
-            else:
-                setattr(self, attr, os.getenv(env_var))
+    def __init__(self) -> None:
+        self.client_id = os.getenv("BOX_CLIENT_ID")
+        self.client_secret = os.getenv("BOX_CLIENT_SECRET")
+        self.enterprise_id = os.getenv("BOX_ENTERPRISE_ID")
+        self.ccg_user_id = os.getenv("BOX_USER_ID")
+        self.cache_file = os.getenv("BOX_CACHE_FILE", ".auth.ccg")
+
+        self.box_root_demo_folder = os.getenv("BOX_ROOT_DEMO_FOLDER")
+
+        self.local_folder_samples = "demo/samples"
+        self.local_folder_templates = f"{self.local_folder_samples}/Templates"
+        self.local_folder_files = f"{self.local_folder_samples}/Files"
+
+        self.local_file_csv = f"{self.local_folder_templates}/Leases.csv"
+        self.local_file_template = f"{self.local_folder_templates}/Lease_Template.docx"
+
+        self.box_folder_templates_name = "Templates"
+        self.box_folder_leases_name = "Habitat Leases"
 
     def __repr__(self) -> str:
         return f"ConfigCCG({self.__dict__})"
@@ -45,7 +45,11 @@ class AppConfig:
     __str__ = __repr__
 
     def to_dict(self) -> dict:
-        return {k: v for k, v in self.__dict__.items() if k != "client_secret"}
+        return {
+            k: v
+            for k, v in self.__dict__.items()
+            if k != "client_secret" and k != "cache_file"
+        }
 
 
 def __repr__(self) -> str:

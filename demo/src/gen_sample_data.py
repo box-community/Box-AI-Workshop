@@ -1,6 +1,6 @@
 from pathlib import Path
 
-from box_sdk_gen import File, Folder
+from box_sdk_gen import Folder
 from tqdm import tqdm
 from utils.box import file_upload, folder_create
 from utils.box_client_ccg import AppConfig, get_ccg_user_client, whoami
@@ -24,20 +24,22 @@ def main():
     print(f"Who am I: {user.name} (id: {user.id})")
 
     # create templates folder in box
-    print("\nCreating templates folder:")
+    print(
+        f"\nCreating templates folder in box using parent id {conf.box_root_demo_folder}:"
+    )
     templates_folder: Folder = folder_create(
         client=client,
         parent_folder_id=conf.box_root_demo_folder,
-        folder_name="Templates",
+        folder_name=conf.box_folder_templates_name,
     )
     # read local template files and upload to box
     print("\nUploading template files:")
     total_bytes = sum(
-        f.stat().st_size for f in Path(f"{conf.folder_samples}/Templates").iterdir()
+        f.stat().st_size for f in Path(f"{conf.local_folder_templates}").iterdir()
     )
     progress_bar = tqdm(total=total_bytes, unit="B", unit_scale=True)
-    for template_file in Path(f"{conf.folder_samples}/Templates").iterdir():
-        file: File = file_upload(
+    for template_file in Path(f"{conf.local_folder_templates}").iterdir():
+        file_upload(
             client=client,
             local_file_path=template_file.as_posix(),
             parent_folder_id=templates_folder.id,
@@ -50,19 +52,19 @@ def main():
     sample_folder: Folder = folder_create(
         client=client,
         parent_folder_id=conf.box_root_demo_folder,
-        folder_name="Habitat Leases",
+        folder_name=conf.box_folder_leases_name,
     )
     print(f"Sample folder: {sample_folder.id}")
 
     # read local sample files and upload to box
     print("\nUploading sample files:")
     total_bytes = sum(
-        f.stat().st_size for f in Path(f"{conf.folder_samples}/Files").iterdir()
+        f.stat().st_size for f in Path(f"{conf.local_folder_files}").iterdir()
     )
     progress_bar = tqdm(total=total_bytes, unit="B", unit_scale=True)
 
-    for sample_file in Path(f"{conf.folder_samples}/files").iterdir():
-        file: File = file_upload(
+    for sample_file in Path(f"{conf.local_folder_files}").iterdir():
+        file_upload(
             client=client,
             local_file_path=sample_file.as_posix(),
             parent_folder_id=sample_folder.id,

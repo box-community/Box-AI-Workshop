@@ -9,8 +9,8 @@ from utils.box_client_ccg import AppConfig
 def execute_mail_merge():
     conf = AppConfig()
 
-    df = pd.read_csv(conf.file_csv, sep=",", quotechar='"')
-    doc = DocxTemplate(conf.file_template)
+    df = pd.read_csv(conf.local_file_csv, sep=",", quotechar='"')
+    doc = DocxTemplate(conf.local_file_template)
     print("\nGenerating sample files:")
 
     for row in tqdm(df.to_dict(orient="records")):
@@ -29,10 +29,10 @@ def execute_mail_merge():
         doc.render(context)
 
         # make sure folder samples exists and create if not
-        Path(f"{conf.folder_samples}/Files").mkdir(parents=True, exist_ok=True)
+        Path(f"{conf.local_folder_files}").mkdir(parents=True, exist_ok=True)
 
-        doc_file_path = f"{conf.folder_samples}/Files/{row.get('Property')}.docx"
+        doc_file_path = f"{conf.local_folder_files}/{row.get('Property')}.docx"
         doc.save(doc_file_path)
         # print(f"Generated: {doc_file_path}")
 
-    print(f"\nGenerated {len(df)} sample files in {conf.folder_samples}/Files")
+    print(f"\nGenerated {len(df)} sample files in {conf.local_folder_files}")
