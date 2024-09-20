@@ -1,0 +1,13 @@
+{
+    "cSpell.words": [
+        "docxtpl",
+        "dotenv",
+        "mailmerge",
+        "tqdm"
+    ],
+    "python.testing.pytestArgs": [
+        "./src"
+    ],
+    "python.testing.unittestEnabled": false,
+    "python.testing.pytestEnabled": true
+}

@@ -2,8 +2,9 @@
 .*
 # not git ignore
 !.gitignore
+!.vscode
 # sample files
-demo/samples/files/*
+samples/files/*
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

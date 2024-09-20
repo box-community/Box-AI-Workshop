@@ -29,7 +29,7 @@ class AppConfig:
 
         self.box_root_demo_folder = os.getenv("BOX_ROOT_DEMO_FOLDER")
 
-        self.local_folder_samples = "demo/samples"
+        self.local_folder_samples = "samples"
         self.local_folder_templates = f"{self.local_folder_samples}/Templates"
         self.local_folder_files = f"{self.local_folder_samples}/Files"
 
