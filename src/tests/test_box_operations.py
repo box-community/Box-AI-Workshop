@@ -6,7 +6,7 @@ from typing import List
 
 from box_sdk_gen import BoxClient, File
 
-from utils.box import file_delete, file_upload, folder_create, folder_delete
+from utils.box_api import file_delete, file_upload, folder_create, folder_delete
 from utils.box_client_ccg import AppConfig
 
 

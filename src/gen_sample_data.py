@@ -2,7 +2,8 @@ from pathlib import Path
 
 from box_sdk_gen import Folder
 from tqdm import tqdm
-from utils.box import file_upload, folder_create
+
+from utils.box_api import file_upload, folder_create
 from utils.box_client_ccg import AppConfig, get_ccg_user_client, whoami
 from utils.create_samples import execute_mail_merge
 
@@ -75,4 +76,5 @@ def main():
 
 
 if __name__ == "__main__":
+    main()
     main()
