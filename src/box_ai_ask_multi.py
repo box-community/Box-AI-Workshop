@@ -1,10 +1,10 @@
-from box_sdk_gen import AiItemBase, AiResponse, BoxClient, CreateAiAskMode
+from box_sdk_gen import AiItemBase, AiResponseFull, BoxClient, CreateAiAskMode
 
 from utils.box_client_ccg import AppConfig, get_ccg_user_client
 from utils.box_samples import files_start_with
 
 
-def print_ai_response(prompt: str, ai_response: AiResponse):
+def print_ai_response(prompt: str, ai_response: AiResponseFull):
     print()
     print("=" * 80)
     print(f"Prompt: {prompt}")
@@ -28,10 +28,6 @@ def main():
     hab_1_files = files_start_with("HAB-1", client, conf)
     hab_2_files = files_start_with("HAB-2", client, conf)
     hab_3_files = files_start_with("HAB-3", client, conf)
-
-    # print(f"Found {len(hab_1_files)} documents starting with 'HAB-1'")
-    # print(f"Found {len(hab_2_files)} documents starting with 'HAB-2'")
-    # print(f"Found {len(hab_3_files)} documents starting with 'HAB-3'")
 
     # randomly select 10% of each files into a single list
     hab_files = (
@@ -69,7 +65,7 @@ def main():
 
         # AI Ask single Summarize document
         items = [AiItemBase(id=file.id, type="file") for file in hab_files]
-        ai_response: AiResponse = client.ai.create_ai_ask(
+        ai_response: AiResponseFull = client.ai.create_ai_ask(
             mode=CreateAiAskMode.MULTIPLE_ITEM_QA,
             prompt=prompt,
             items=items,

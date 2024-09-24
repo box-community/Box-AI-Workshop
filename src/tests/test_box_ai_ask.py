@@ -1,6 +1,6 @@
 from typing import List
 
-from box_sdk_gen import AiItemBase, AiResponse, BoxClient, CreateAiAskMode, File
+from box_sdk_gen import AiItemBase, AiResponseFull, BoxClient, CreateAiAskMode, File
 
 
 def test_ai_ask_single_item(
@@ -10,7 +10,7 @@ def test_ai_ask_single_item(
 
     prompt = "Summarize document"
     item = AiItemBase(id=box_test_samples[0].id, type="file")
-    ai_response: AiResponse = client.ai.create_ai_ask(
+    ai_response: AiResponseFull = client.ai.create_ai_ask(
         mode=CreateAiAskMode.SINGLE_ITEM_QA,
         prompt=prompt,
         items=[item],
@@ -26,7 +26,7 @@ def test_ai_ask_multi_item(
 
     prompt = "Summarize documents"
     items = [AiItemBase(id=file.id, type="file") for file in box_test_samples]
-    ai_response: AiResponse = client.ai.create_ai_ask(
+    ai_response: AiResponseFull = client.ai.create_ai_ask(
         mode=CreateAiAskMode.MULTIPLE_ITEM_QA,
         prompt=prompt,
         items=items,

@@ -1,10 +1,10 @@
-from box_sdk_gen import AiItemBase, AiResponse, BoxClient, CreateAiAskMode
+from box_sdk_gen import AiItemBase, AiResponseFull, BoxClient, CreateAiAskMode
 
 from utils.box_client_ccg import AppConfig, get_ccg_user_client
 from utils.box_samples import files_start_with
 
 
-def print_ai_response(prompt: str, ai_response: AiResponse):
+def print_ai_response(prompt: str, ai_response: AiResponseFull):
     print()
     print("=" * 80)
     print(f"Prompt: {prompt}")
@@ -30,7 +30,7 @@ def main():
     # AI Ask single Summarize document
     prompt = "Summarize document"
     item = AiItemBase(id=hab_files[0].id, type="file")
-    ai_response: AiResponse = client.ai.create_ai_ask(
+    ai_response: AiResponseFull = client.ai.create_ai_ask(
         mode=CreateAiAskMode.SINGLE_ITEM_QA,
         prompt=prompt,
         items=[item],
@@ -67,7 +67,7 @@ def main():
 
         # AI Ask single Summarize document
         item = AiItemBase(id=hab_files[0].id, type="file")
-        ai_response: AiResponse = client.ai.create_ai_ask(
+        ai_response: AiResponseFull = client.ai.create_ai_ask(
             mode=CreateAiAskMode.SINGLE_ITEM_QA,
             prompt=prompt,
             items=[item],
