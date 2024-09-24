@@ -2,8 +2,10 @@ import random
 import string
 import tempfile
 from pathlib import Path
+from typing import List
 
-from box_sdk_gen import BoxClient
+from box_sdk_gen import BoxClient, File
+
 from utils.box import file_delete, file_upload, folder_create, folder_delete
 from utils.box_client_ccg import AppConfig
 
@@ -71,3 +73,13 @@ def test_box_folder_create(box_client_ccg_user: BoxClient, box_env_ccg: AppConfi
 
     # delete folder
     folder_delete(client, folder.id, recursive=True)
+
+
+def test_box_files_sample(box_client_ccg_user: BoxClient, box_test_samples: List[File]):
+    client = box_client_ccg_user
+
+    # check if sample files are uploaded
+    for file_test in box_test_samples:
+        file_box = client.files.get_file_by_id(file_test.id)
+        assert file_box is not None
+        assert file_box.id == file_test.id
