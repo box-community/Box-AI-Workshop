@@ -29,13 +29,13 @@ def main():
     hab_2_files = files_start_with("HAB-2", client, conf)
     hab_3_files = files_start_with("HAB-3", client, conf)
 
-    # randomly select 10% of each files into a single list
+    # select 10% of each files into a single list
     hab_files = (
         hab_1_files[: int(len(hab_1_files) * 0.4)]
         + hab_2_files[: int(len(hab_2_files) * 0.4)]
         + hab_3_files[: int(len(hab_3_files) * 0.4)]
     )
-    print(f"Using {len(hab_files)} documents for AI Ask")
+    print(f"Using {len(hab_files)} documents for Box AI context")
 
     # Example prompts
     example_prompts = [
