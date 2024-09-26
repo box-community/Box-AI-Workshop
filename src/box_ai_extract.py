@@ -51,6 +51,7 @@ def main():
     output: List[AiResponseFull] = []
 
     prompt = (
+        "Property id,"
         "Lease Start Date, Lease End Date, Monthly Rent, Property Address,"
         "Lessee Name, Lessee Email, Lessor Name, Agreement Date, "
         "Agreement Term, Number of bed rooms as an integer, "
@@ -58,7 +59,7 @@ def main():
     )
     items = [AiItemBase(id=file.id, type="file") for file in hab_files]
 
-    print(f"Extracting data from {len(items)} documents...")
+    print(f"\nExtracting data from {len(items)} documents...")
     progress_bar = tqdm(total=len(items))
     for idx, item in enumerate(items):
         ai_response = client.ai.create_ai_extract(prompt=prompt, items=[item])
