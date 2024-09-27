@@ -8,6 +8,8 @@ To successfully complete this workshop, ensure you have the following:
 - A Box account with access to the Box AI API.
 - Python 3.9 or higher installed on your machine.
 
+Follow our official guide to [Get started with Box AI](https://developer.box.com/guides/box-ai/prerequisites/).
+
 ## Clone the Repository:
 
 bash
