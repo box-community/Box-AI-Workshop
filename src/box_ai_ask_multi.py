@@ -44,6 +44,7 @@ def main():
         "What is the monthly expected revenue for these units?",
     ]
 
+    items = [AiItemBase(id=file.id, type="file") for file in hab_files]
     # Infinite cycle to ask the user for prompts
     while True:
         # Display example prompts
@@ -63,8 +64,8 @@ def main():
         if prompt.isdigit() and 1 <= int(prompt) <= 5:
             prompt = example_prompts[int(prompt) - 1]
 
-        # AI Ask single Summarize document
-        items = [AiItemBase(id=file.id, type="file") for file in hab_files]
+        # AI Ask multi Summarize document
+
         ai_response: AiResponseFull = client.ai.create_ai_ask(
             mode=CreateAiAskMode.MULTIPLE_ITEM_QA,
             prompt=prompt,
