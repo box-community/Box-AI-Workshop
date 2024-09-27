@@ -13,7 +13,7 @@ In this workshop, we will cover the following Box AI endpoints:
 
 ## Use case and context
 
-Imagine yourself creating an application to help a user manage leases for 50 properties. You have a set of lease documents in your Box account, and your application will halp users to answer questions about a single or multiple documents, as wel as extract data from those documents.
+Imagine yourself creating an application to help a user manage leases for 50 properties. You have a set of lease documents in your Box account, and your application will help users to answer questions about a single or multiple documents, as wel as extract data from those documents.
 
 The properties vary from a single communal bed room to a three bedroom apartment. The lease documents are in Word format and contain information about the property, the tenant, the landlord, and the lease terms.
 

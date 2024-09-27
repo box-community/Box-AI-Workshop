@@ -39,7 +39,7 @@ Answer:
 The document is a Lunar Property Lease Agreement between Schiaparelli Plaza (Lessor) and Marie Tharp (Lessee), effective from May 1, 2024, to April 30, 2027. It outlines the lease of a lunar habitat unit (HAB-1-01) featuring a private bedroom, open-plan kitchen and living room, recycling facilities, life support systems, and high-bandwidth connectivity. The monthly rent is $3,125, due on the first of each lunar month. The agreement emphasizes compliance with international space laws, responsibilities for maintenance, insurance requirements, and conditions for termination. Disputes will be resolved through arbitration by the United Nations Office for Outer Space Affairs.
 ```
 
-Go ahead and execute the script `src/box_ai_ask_single.py` to see the answer to your question about the document. We've included a dew sample prompts, and you can also ask anything you want about the document.
+Go ahead and execute the script `src/box_ai_ask_single.py` to see the answer to your question about the document. We've included a few sample prompts, and you can also ask anything you want about the document.
 
 ```
 Example prompts:
@@ -96,7 +96,7 @@ Thus, the five contracts that renew first are:
 5. HAB-1-08
 ```
 
-Go ahead and execute the script `src/box_ai_ask_multi.py`. We've included a dew sample prompts, and you can also ask anything you want about the documents.
+Go ahead and execute the script `src/box_ai_ask_multi.py`. We've included a few sample prompts, and you can also ask anything you want about the documents.
 
 ```
 Example prompts:
