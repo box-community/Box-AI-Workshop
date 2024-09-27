@@ -4,6 +4,11 @@ Sends an AI request to supported LLMs and returns an answer specifically focused
 
 You can ask questions about a single document or multiple documents. The AI model will provide an answer based on the context of the question and the content of the document(s).
 
+## Official documentation
+- [Guide](https://developer.box.com/guides/box-ai/ask-questions/)
+- [API reference](https://developer.box.com/reference/post-ai-ask/)
+
+
 ## Ask questions about a single document
 
 Consider this code snippet:

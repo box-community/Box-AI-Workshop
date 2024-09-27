@@ -2,6 +2,12 @@
 
 Sends an AI request to supported Large Language Models (LLMs) and returns extracted data as a set of key-value pairs. For this request, you need to define a schema yourself.
 
+## Official documentation
+- [Guide](https://developer.box.com/guides/box-ai/extract-metadata-structured/)
+- [API reference](https://developer.box.com/reference/post-ai-extract-structured/)
+
+## Workshop
+
 Here is an example on how to define an element for the extraction schema:
 
 ```python
@@ -13,12 +19,12 @@ CreateAiExtractStructuredFields(
 ```
 
 The `CreateAiExtractStructuredFields` class has the following parameters:
-- key: str, the key of the extracted field
-- description: Optional[str] = None, a description of the field
-- display_name: Optional[str] = None, a display name for the field
-- prompt: Optional[str] = None, a prompt for the field
-- type: Optional[str] = None, the type of the field
-- options: Optional[List[CreateAiExtractStructuredFieldsOptionsField]] = None, options for the field
+- `key`: str, the key of the extracted field
+- `description`: Optional[str] = None, a description of the field
+- `display_name`: Optional[str] = None, a display name for the field
+- `prompt`: Optional[str] = None, a prompt for the field
+- `type`: Optional[str] = None, the type of the field
+- `options`: Optional[List[CreateAiExtractStructuredFieldsOptionsField]] = None, options for the field
 
 The schema element serves 2 purposes:
 - It defines the output key and format for the extracted data

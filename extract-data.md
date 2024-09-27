@@ -2,6 +2,11 @@
 
 Sends an AI request to supported Large Language Models (LLMs) and extracts data in form of key-value pairs. Freeform ata extraction does not require any metadata template setup before sending the request.
 
+## Official documentation
+- [Guide](https://developer.box.com/guides/box-ai/extract-metadata/)
+- [API reference](https://developer.box.com/reference/post-ai-extract/)
+
+## Workshop
 Typically you would extract data from a single document, or at least from each document individually. The AI model will provide key-value pairs based on the content of the document(s).
 
 Consider this sample code snippet:
