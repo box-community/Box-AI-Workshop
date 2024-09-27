@@ -24,4 +24,5 @@ The properties vary from a single communal bed room to a three bedroom apartment
 <!-- - [Generate text](generate-text.md): Generate text using a language model. -->
 - [Extract data](extract-data.md): Extract data from documents.
 - [Extract structured data](extract-data-structured.md): Extract structured data from documents.
+<!-- - [Box metadata extraction](metadata.md): Extract data using a Box metadata template. -->
 
