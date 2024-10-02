@@ -41,7 +41,7 @@ prompt = (
         "Property id,"
         "Lease Start Date, Lease End Date, Monthly Rent, Property Address,"
         "Lessee Name, Lessee Email, Lessor Name, Agreement Date, "
-        "Agreement Term, Number of bed rooms as an integer, "
+        "Agreement Term, Number of bedrooms as an integer, "
         "all dates should be in format yyyy-mm-dd"
     )
 items = [AiItemBase(id=hab_files[0].id, type="file")]
@@ -62,7 +62,7 @@ Lessee Email: marie.tharp@moonhabitat.space
 Lessor Name: Schiaparelli plaza
 Agreement Date: 2024-04-24
 Agreement Term: 3 years
-Number of bed rooms: 1
+Number of bedrooms: 1
 ```
 
 Go ahead and execute the script `src/box_ai_extract.py` to see the data extraction process.

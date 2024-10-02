@@ -54,7 +54,7 @@ def main():
         "Property id,"
         "Lease Start Date, Lease End Date, Monthly Rent, Property Address,"
         "Lessee Name, Lessee Email, Lessor Name, Agreement Date, "
-        "Agreement Term, Number of bed rooms as an integer, "
+        "Agreement Term, Number of bedrooms as an integer, "
         "all dates should be in format yyyy-mm-dd"
     )
     items = [AiItemBase(id=file.id, type="file") for file in hab_files]

@@ -59,7 +59,7 @@ def main():
     # Lessor Name: Schiaparelli plaza
     # Agreement Date: 2024-04-21
     # Agreement Term: 3 years
-    # Number of bed rooms: 3
+    # Number of bedrooms: 3
 
     # Documents
     items = [AiItemBase(id=file.id, type="file") for file in hab_files]
@@ -144,7 +144,7 @@ def main():
         CreateAiExtractStructuredFields(
             type=FieldType.INTEGER,
             key="number_of_bedrooms",
-            prompt="Number of bed rooms as an integer",
+            prompt="Number of bedrooms as an integer",
         )
     )
 
