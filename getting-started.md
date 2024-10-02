@@ -6,16 +6,17 @@ Follow these steps to get started with the workshop.
 To successfully complete this workshop, ensure you have the following:
 
 - A Box account with access to the Box AI API.
+- A Box CCG application created in your Box account (see this [guide](https://medium.com/box-developer-blog/box-python-next-gen-sdk-getting-started-with-ccg-81be0abc82d9)).
 - Python 3.9 or higher installed on your machine.
 
 Follow our official guide to [Get started with Box AI](https://developer.box.com/guides/box-ai/prerequisites/).
 
 ## Clone the Repository:
 
-bash
-Copy code
+```bash
 git clone https://github.com/box-community/box-ai-workshop.git
 cd box-ai-workshop
+```
 
 ## Create a python virtual environment:
 

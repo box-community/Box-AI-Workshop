@@ -69,6 +69,7 @@ def main():
             client=client,
             local_file_path=sample_file.as_posix(),
             parent_folder_id=sample_folder.id,
+            force=True,
         )
         progress_bar.update(sample_file.stat().st_size)
     progress_bar.close()

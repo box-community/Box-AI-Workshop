@@ -2,3 +2,4 @@ box-sdk-gen==1.5.1
 pandas==2.2.2
 python-dotenv==1.0.1
 docxtpl==0.18.0
+tqdm==4.66.5
