@@ -1,4 +1,4 @@
-# Box AI Workshop - Managing property leases
+# Box AI workshop - Managing property leases
 
 Welcome to the Box AI Workshop! This repository contains a comprehensive guide for developers to utilize the Box AI endpoints through the Box Python Next Gen SDK. In this workshop, you'll learn how to interact with various Box AI capabilities, including document processing and conversational interactions with a language model.
 
@@ -21,8 +21,14 @@ The properties vary from a single communal bed room to a three bedroom apartment
 
 - [Getting started](getting-started.md): Set up your environment and generate sample data.
 - [Ask questions](ask-questions.md): Learn how to ask questions about documents.
-<!-- - [Generate text](generate-text.md): Generate text using a language model. -->
+- [Generate text](generate-text.md): Generate text using a language model.
 - [Extract data](extract-data.md): Extract data from documents.
 - [Extract structured data](extract-data-structured.md): Extract structured data from documents.
-<!-- - [Box metadata extraction](metadata.md): Extract data using a Box metadata template. -->
+- [Box metadata extraction](extract-metadata.md): Extract data using a Box metadata template.
 
+## Summary
+
+This Box AI workshop demonstrates how to use Box AI's powerful features to streamline and enhance document processing. 
+With endpoints like `/ai/ask`, you can quickly retrieve answers from single or multiple documents, making it easy to extract key information. 
+The `/ai/extract` endpoints allows for efficient data extraction, whether in freeform or structured formats, enabling users to pull important details from unstructured documents. 
+These AI capabilities help automate repetitive tasks, reduce errors, and provide deeper insights, ultimately transforming how you handle and manage documents using AI.
