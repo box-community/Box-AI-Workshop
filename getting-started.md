@@ -14,8 +14,8 @@ Follow our official guide to [Get started with Box AI](https://developer.box.com
 ## Clone the Repository:
 
 ```bash
-git clone https://github.com/box-community/box-ai-workshop.git
-cd box-ai-workshop
+git clone git@github.com:box-community/Box-AI-Workshop.git
+cd Box-AI-Workshop
 ```
 
 ## Create a python virtual environment:
