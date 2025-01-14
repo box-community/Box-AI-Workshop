@@ -1,0 +1,18 @@
+[project]
+name = "bo-ai-workshop"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+dependencies = [
+    "box-sdk-gen>=1.9.0",
+    "docxtpl>=0.19.1",
+    "pandas>=2.2.3",
+    "python-dotenv>=1.0.1",
+    "tqdm>=4.67.1",
+]
+
+[dependency-groups]
+dev = [
+    "pytest>=8.3.4",
+    "ruff>=0.9.1",
+]
