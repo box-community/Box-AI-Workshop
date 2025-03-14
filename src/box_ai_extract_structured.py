@@ -162,7 +162,7 @@ def main():
         ai_response = client.ai.create_ai_extract_structured(
             items=[item], fields=fields
         )
-        sample_leases.append(LeaseDocument(**ai_response.to_dict()))
+        sample_leases.append(LeaseDocument(**ai_response.answer))
         progress_bar.update()
     progress_bar.close()
     print()

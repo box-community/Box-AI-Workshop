@@ -57,7 +57,7 @@ def main():
     ai_response = client.ai.create_ai_extract_structured(
         items=[item],
         metadata_template=metadata_template,
-    ).to_dict()
+    ).answer
     print_ai_response("Extract metadata from single document", ai_response)
 
     # Apply metadata to document
@@ -78,7 +78,7 @@ def main():
         ai_response = client.ai.create_ai_extract_structured(
             items=[item],
             metadata_template=metadata_template,
-        ).to_dict()
+        ).answer
 
         # Apply metadata to document
         apply_metadata_to_document(client, item.id, template_key, ai_response)
